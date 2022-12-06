@@ -4,23 +4,71 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+    private int playerHealth;
+    private float playerSpeed;
+    private bool isGrounded;
+    private string playerName;
+    private Vector2 playerPosition;
+    private Rigidbody2D rb;
 
-    private int _playerHealth;
-    private float _playerSpeed;
-     private bool _isGrounded;
-     private string _playerName;
-     private Vector2 _playerPosition;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        _playerHealth = 100;
+        playerHealth = 100;
+        playerSpeed = 10;
+        isGrounded = false;
+        playerName = "Tester";
+        rb = GetComponent<Rigidbody2D>();
 
+
+        //rigidbody.velocity = playerPosition;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
-    }
+
+
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
+
+        Vector3 tempVect = new Vector3(h, v, 0);
+        tempVect = tempVect.normalized * playerSpeed * Time.deltaTime;
+        rb.MovePosition(rb.transform.position + tempVect);
+
+		if (!Input.anyKey)
+		{
+			rb.velocity = new Vector2(0, 0);
+		}
+
+
+		//if (Input.GetKey("left"))
+		//{
+		//          rb.velocity = new Vector2(-1, 0);
+
+		//      }
+
+		//      if (Input.GetKey("up"))
+		//      {
+		//          rb.velocity = new Vector2(0, 1);
+		//      }
+
+		//      if (Input.GetKey("right"))
+		//      {
+
+		//          rb.velocity = new Vector2(1, 0);
+		//      }
+
+		//      if (Input.GetKey("down"))
+		//      {
+		//          rb.velocity = new Vector2(0, -1);
+		//      }
+
+		//      if (!Input.anyKey)
+		//{
+		//          rb.velocity = new Vector2(0, 0);
+		//      }
+	}
 }
