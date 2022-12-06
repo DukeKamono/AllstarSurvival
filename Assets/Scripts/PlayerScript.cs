@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    private int playerHealth;
+    private float playerHealth;
     private float playerSpeed;
     private bool isGrounded;
     private string playerName;
     private Vector2 playerPosition;
     private Rigidbody2D rb;
+	private float lastDamageTime = 0f;
+	public float damagePeriod = 0.5f;
 
-    
 
-    // Start is called before the first frame update
-    void Start()
+	// Start is called before the first frame update
+	void Start()
     {
         playerHealth = 100;
         playerSpeed = 10;
@@ -70,5 +71,18 @@ public class PlayerScript : MonoBehaviour
 		//{
 		//          rb.velocity = new Vector2(0, 0);
 		//      }
+	}
+
+	public void TakeDamage(float amount)
+	{
+		//Need to change times for invulnerability times. Maybe set it to player stats
+		if (Time.time - lastDamageTime >= damagePeriod)
+		{
+			playerHealth -= amount;
+
+			Debug.Log(playerHealth);
+
+			lastDamageTime = Time.time;
+		}
 	}
 }
