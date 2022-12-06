@@ -5,13 +5,15 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public float enemySpeed;
-    public GameObject player;
+    //public float enemySpeed;
+    private EnemyStats stats;
+    private GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        stats = GetComponent<EnemyStats>();
 
         if (player == null)
         {
@@ -23,7 +25,7 @@ public class EnemyMovement : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 playerVector = new Vector3(player.transform.position.x, player.transform.position.y, 1);
-        rb.transform.position = Vector3.MoveTowards(rb.transform.position, playerVector, enemySpeed * Time.deltaTime);
+        rb.transform.position = Vector3.MoveTowards(rb.transform.position, playerVector, stats.speed * Time.deltaTime);
     }
 
     //I had to set player to Kinematic and the enemy to Dynamic with x/y/z roation freezed for them to overlap.
@@ -40,8 +42,19 @@ public class EnemyMovement : MonoBehaviour
         if (player.CompareTag(collision.gameObject.tag))
         {
             //If the GameObject has the same tag as specified, output this message in the console
-            Debug.Log("Do something else here");
+            //Debug.Log("Do something else here");
+
+            player.GetComponent<PlayerScript>().TakeDamage(stats.attackDamage);
         }
+
+
+
+
+        //if (collision.gameObject.tag == "RechargePoint")
+        //{
+        //    batteryLevel = Mathf.Min(batteryLevel + rechargeRate * Time.deltaTime, 100.0f);
+        //}
+
     }
 
 
