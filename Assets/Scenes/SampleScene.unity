@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &154427393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,6 +155,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnPrefab: {fileID: 5007605895047800062, guid: 5d1262ede7f0e1b43a76b94533638eea, type: 3}
+  timeBetweenSpawn: 0
+  startTimeBetweenSpawn: 1
+  decreaseTime: 0
+  minTime: 0.65
+  spawnSide: 0
+  cameraHeight: 0
+  cameraWidth: 0
+  worldPoint: {x: 0, y: 0, z: 0}
 --- !u!50 &154427394
 Rigidbody2D:
   serializedVersion: 4
@@ -271,19 +279,19 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330734557}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1000
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &330734559
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -402,6 +410,7 @@ GameObject:
   - component: {fileID: 651818690}
   - component: {fileID: 651818689}
   - component: {fileID: 651818692}
+  - component: {fileID: 651818693}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -488,6 +497,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 330734557}
+--- !u!114 &651818693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651818688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f47f39d3cd0dc6b4985fdd93d6b72819, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnPrefab: {fileID: 5007605895047800062, guid: 5d1262ede7f0e1b43a76b94533638eea, type: 3}
+  timeBetweenSpawn: 0
+  startTimeBetweenSpawn: 1
+  decreaseTime: 0
+  minTime: 0.65
+  spawnSide: 0
+  cameraHeight: 0
+  cameraWidth: 0
+  worldPoint: {x: 0, y: 0, z: 0}
 --- !u!1 &1745527561
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,7 +531,7 @@ GameObject:
   - component: {fileID: 1745527562}
   - component: {fileID: 1745527565}
   m_Layer: 0
-  m_Name: Player (1)
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -522,12 +552,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!212 &1745527563
 SpriteRenderer:
   m_ObjectHideFlags: 0

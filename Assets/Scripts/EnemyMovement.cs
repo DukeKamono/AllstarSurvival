@@ -10,7 +10,7 @@ public class EnemyMovement : MonoBehaviour
     private GameObject player;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         stats = GetComponent<EnemyStats>();
@@ -21,7 +21,6 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         Vector3 playerVector = new Vector3(player.transform.position.x, player.transform.position.y, 1);
@@ -45,6 +44,7 @@ public class EnemyMovement : MonoBehaviour
             //Debug.Log("Do something else here");
 
             player.GetComponent<PlayerScript>().TakeDamage(stats.attackDamage);
+            rb.velocity = new Vector2(0, 0);
         }
 
 
