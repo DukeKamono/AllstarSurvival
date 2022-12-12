@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+	private float horizontal;
+	private float vertical;
     private float playerHealth;
     private float playerSpeed;
     private bool isGrounded;
@@ -18,26 +20,50 @@ public class PlayerScript : MonoBehaviour
 	void Start()
     {
         playerHealth = 100;
-        playerSpeed = 10;
+        playerSpeed = 500;
         isGrounded = false;
         playerName = "Tester";
         rb = GetComponent<Rigidbody2D>();
 
 
-        //rigidbody.velocity = playerPosition;
-    }
+		//rigidbody.velocity = playerPosition;
+	}
 
-    // Update is called once per frame
-    void FixedUpdate()
+	// Update is called once per frame
+	private void Update()
+	{
+		horizontal = Input.GetAxis("Horizontal");
+		vertical = Input.GetAxis("Vertical");
+
+		playerPosition = new Vector2(horizontal, vertical).normalized;
+
+		//This was to keep animation sides.
+		//if (playerPosition.x != 0)
+		//{
+		//	lastHorizontalVector = playerPosition.x;
+		//}
+
+		//if (playerPosition.y != 0)
+		//{
+		//	lastVerticalVector = playerPosition.y;
+		//}
+	}
+
+	// FixedUpdate() is more suited for physics calculation as it calls in regular intervals and is not based on framerate like with Update().
+	void FixedUpdate()
     {
+		//Vector3 tempVect = new Vector3(horizontal, vertical, 0);
+		//tempVect = tempVect.normalized * playerSpeed * Time.deltaTime;
+		//rb.MovePosition(rb.transform.position + tempVect);
 
 
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+		//Vector2 position = rb.position;
+		//position.x = position.x + playerSpeed * horizontal * Time.deltaTime;
+		//position.y = position.y + playerSpeed * vertical * Time.deltaTime;
 
-        Vector3 tempVect = new Vector3(h, v, 0);
-        tempVect = tempVect.normalized * playerSpeed * Time.deltaTime;
-        rb.MovePosition(rb.transform.position + tempVect);
+		//rb.MovePosition(position);
+
+		rb.velocity = new Vector2(playerPosition.x * playerSpeed * Time.deltaTime, playerPosition.y * playerSpeed * Time.deltaTime);
 
 		if (!Input.anyKey)
 		{
@@ -80,7 +106,7 @@ public class PlayerScript : MonoBehaviour
 		{
 			playerHealth -= amount;
 
-			Debug.Log(playerHealth);
+			//Debug.Log(playerHealth);
 
 			lastDamageTime = Time.time;
 		}
