@@ -6,9 +6,9 @@ public class SpawnEnemy : MonoBehaviour
 {
     public GameObject respawnPrefab;
     public float timeBetweenSpawn;
-    public float startTimeBetweenSpawn = 1;
+    public float startTimeBetweenSpawn;
     public float decreaseTime;
-    public float minTime = 0.65f;
+    //public float minTime;
     public int spawnSide;
 
     public float cameraHeight;
@@ -18,6 +18,9 @@ public class SpawnEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        startTimeBetweenSpawn = 1;
+        //minTime = 0.65f;
+
         //Instantiate(respawnPrefab, gameObject.transform.position, gameObject.transform.rotation);
         spawnSide = Random.Range(0, 4);
 

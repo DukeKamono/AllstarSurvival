@@ -6,14 +6,15 @@ public class PlayerScript : MonoBehaviour
 {
 	private float horizontal;
 	private float vertical;
-    private float playerHealth;
+	private Vector2 playerPosition;
+
+	private float playerHealth;
     private float playerSpeed;
     private bool isGrounded;
     private string playerName;
-    private Vector2 playerPosition;
     private Rigidbody2D rb;
-	private float lastDamageTime = 0f;
-	public float damagePeriod = 0.5f;
+	private float lastDamageTime;
+	public float damagePeriod;
 
 
 	// Start is called before the first frame update
@@ -23,7 +24,9 @@ public class PlayerScript : MonoBehaviour
         playerSpeed = 500;
         isGrounded = false;
         playerName = "Tester";
-        rb = GetComponent<Rigidbody2D>();
+		lastDamageTime = 0f;
+		damagePeriod = 0.5f;
+		rb = GetComponent<Rigidbody2D>();
 
 
 		//rigidbody.velocity = playerPosition;
