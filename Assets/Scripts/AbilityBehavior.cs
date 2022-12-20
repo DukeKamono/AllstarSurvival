@@ -27,6 +27,7 @@ public class AbilityBehavior : MonoBehaviour
 
     void FixedUpdate()
 	{
+        //This gives it a floaty effect like bubbles. Might save later.
 		Vector2 abilityVector = new Vector2(rb.position.x * abilitySpeed * Time.deltaTime, rb.position.y * abilitySpeed * Time.deltaTime).normalized;
         rb.AddForce(abilityVector);
 
