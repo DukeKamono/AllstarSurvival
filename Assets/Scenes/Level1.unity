@@ -152,9 +152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f47f39d3cd0dc6b4985fdd93d6b72819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respawnPrefab: {fileID: 5007605895047800062, guid: 5d1262ede7f0e1b43a76b94533638eea, type: 3}
-  timeBetweenSpawn: 0
-  startTimeBetweenSpawn: 1
   decreaseTime: 0
   spawnSide: 0
   cameraHeight: 0
@@ -189,6 +186,8 @@ GameObject:
   - component: {fileID: 330734561}
   - component: {fileID: 330734562}
   - component: {fileID: 330734563}
+  - component: {fileID: 330734564}
+  - component: {fileID: 330734565}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -330,7 +329,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330734557}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 954fa5ada5529f944bec95d66af172f6, type: 3}
   m_Name: 
@@ -339,6 +338,30 @@ MonoBehaviour:
   abilites: []
   abilityTime: 0
   abilityStartTime: 0
+--- !u!114 &330734564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330734557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b70aa5a61057dff3ebb8927dd5e60c4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &330734565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330734557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffe5bc58c9ac0c2e19b511d2ce61e335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &651818688
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,9 +473,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f47f39d3cd0dc6b4985fdd93d6b72819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respawnPrefab: {fileID: 5007605895047800062, guid: 5d1262ede7f0e1b43a76b94533638eea, type: 3}
-  timeBetweenSpawn: 0
-  startTimeBetweenSpawn: 1
   decreaseTime: 0
   spawnSide: 0
   cameraHeight: 0

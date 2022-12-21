@@ -59,6 +59,7 @@ public class AbilityBehavior : MonoBehaviour
         {
             collision.gameObject.GetComponent<EnemyStats>().TakeDamage(abilityDamage);
             Destroy(gameObject);
+            
         }
     }
 }
