@@ -3,28 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-public class LeftBullet : MonoBehaviour
+public class Bubbles : MonoBehaviour
 {
     private Ability attributes;
     private Rigidbody2D playerRigidBody;
     private GameObject abilityPrefab;
     private float abilityTime;
-    private AbilityBehavior behavior;
+    public float abilitySpeed;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        behavior = gameObject.GetComponent<AbilityBehavior>();
-        
         attributes = gameObject.AddComponent<Ability>();
-
+        
         attributes.rarity = 1f;
         attributes.cooldown = 1f;
         attributes.power = 5f;
-        attributes.skillName = "LeftBullet";
+        attributes.skillName = "Bubbles";
         attributes.sprite = "Assets/Prefabs/Ability1.prefab";
-        attributes.momentum = new Vector2(-10f, 0f);
+        attributes.momentum = new Vector2(0f, -10f);
+
+        abilitySpeed = 5f;
 
         playerRigidBody = GetComponent<Rigidbody2D>();
         CreateParticle();
@@ -42,14 +42,16 @@ public class LeftBullet : MonoBehaviour
         {
             abilityTime -= Time.deltaTime;
         }
-
     }
 
     void CreateParticle()
 	{
-        abilityPrefab = Instantiate(AssetDatabase.LoadAssetAtPath(attributes.sprite, typeof(GameObject)) as GameObject, new Vector3(playerRigidBody.gameObject.transform.position.x - 0.5f, playerRigidBody.gameObject.transform.position.y, 1f), Quaternion.identity);
+        abilityPrefab = Instantiate(AssetDatabase.LoadAssetAtPath(attributes.sprite, typeof(GameObject)) as GameObject, new Vector3(playerRigidBody.gameObject.transform.position.x, playerRigidBody.gameObject.transform.position.y, 1f), Quaternion.identity);
         var rb = abilityPrefab.GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(attributes.momentum.x - Mathf.Abs(playerRigidBody.velocity.x), 0.0f);
+        //This gives it a floaty effect like bubbles. Might save later. or it did.
+        Vector2 abilityVector = new Vector2(rb.position.x * abilitySpeed * Time.deltaTime, rb.position.y * abilitySpeed * Time.deltaTime).normalized;
+        rb.AddForce(abilityVector);
+
         abilityTime = attributes.cooldown;
     }
 }

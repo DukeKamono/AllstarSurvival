@@ -10,8 +10,8 @@ public class PlayerScript : MonoBehaviour
 
 	private float playerHealth;
     private float playerSpeed;
-    private bool isGrounded;
-    private string playerName;
+    //private bool isGrounded;
+    //private string playerName;
     private Rigidbody2D rb;
 	private float lastDamageTime;
 	public float damagePeriod;
@@ -22,8 +22,8 @@ public class PlayerScript : MonoBehaviour
     {
         playerHealth = 100;
         playerSpeed = 500;
-        isGrounded = false;
-        playerName = "Tester";
+        //isGrounded = false;
+        //playerName = "Tester";
 		lastDamageTime = 0f;
 		damagePeriod = 0.5f;
 		rb = GetComponent<Rigidbody2D>();
